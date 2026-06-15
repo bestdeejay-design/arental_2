@@ -10,6 +10,7 @@
   --bg: #0a0a0c;
   --bg-card: #121214;
   --bg-elevated: #18181b;
+  --nav-bg: rgba(10, 10, 12, 0.8);
   --ink: #f5f5f7;
   --ink-secondary: #86868b;
   --ink-tertiary: #6e6e73;
@@ -28,6 +29,7 @@
   --bg: #f5f5f0;
   --bg-card: #eeeae2;
   --bg-elevated: #fff;
+  --nav-bg: rgba(245, 245, 240, 0.85);
   --ink: #1d1d1f;
   --ink-secondary: #6e6e73;
   --ink-tertiary: #86868b;
@@ -42,6 +44,7 @@
   --bg: #0d0d0d;
   --bg-card: #161616;
   --bg-elevated: #1c1c1c;
+  --nav-bg: rgba(13, 13, 13, 0.85);
   --ink: #f5f5f5;
   --ink-secondary: #6e6e73;
   --ink-tertiary: #5e5e63;
@@ -174,7 +177,7 @@ button { font: inherit; cursor: pointer; background: none; border: none; color: 
   top: 0;
   width: 100%;
   z-index: 100;
-  background: rgba(10, 10, 12, 0.8);
+  background: var(--nav-bg);
   backdrop-filter: saturate(180%) blur(20px);
   -webkit-backdrop-filter: saturate(180%) blur(20px);
   border-bottom: 1px solid var(--border);
@@ -275,7 +278,7 @@ button { font: inherit; cursor: pointer; background: none; border: none; color: 
   position: fixed;
   inset: 0;
   z-index: 99;
-  background: rgba(10, 10, 12, 0.95);
+  background: var(--bg);
   backdrop-filter: blur(40px);
   -webkit-backdrop-filter: blur(40px);
   align-items: center;
