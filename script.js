@@ -1,6 +1,24 @@
 (function () {
   'use strict';
 
+  function setTheme(theme) {
+    document.body.className = theme;
+    try { localStorage.setItem('arental_theme', theme); } catch (e) {}
+    document.querySelectorAll('.theme-btn').forEach(function (btn) {
+      btn.classList.toggle('active', btn.getAttribute('data-theme') === theme);
+    });
+  }
+
+  document.querySelectorAll('.theme-btn').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      setTheme(btn.getAttribute('data-theme'));
+    });
+  });
+
+  var savedTheme;
+  try { savedTheme = localStorage.getItem('arental_theme'); } catch (e) {}
+  setTheme(savedTheme || 'dark');
+
   var navbar = document.getElementById('navbar');
   var lastScroll = 0;
 

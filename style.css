@@ -24,6 +24,40 @@
   --transition: 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
 }
 
+.light {
+  --bg: #f5f5f0;
+  --bg-card: #eeeae2;
+  --bg-elevated: #fff;
+  --ink: #1d1d1f;
+  --ink-secondary: #6e6e73;
+  --ink-tertiary: #86868b;
+  --accent: #b45309;
+  --accent-glow: rgba(180, 83, 9, 0.08);
+  --accent-weak: rgba(180, 83, 9, 0.04);
+  --border: rgba(0, 0, 0, 0.08);
+  --border-hover: rgba(0, 0, 0, 0.12);
+}
+
+.bright {
+  --bg: #0d0d0d;
+  --bg-card: #161616;
+  --bg-elevated: #1c1c1c;
+  --ink: #f5f5f5;
+  --ink-secondary: #6e6e73;
+  --ink-tertiary: #5e5e63;
+  --accent: #f97316;
+  --accent-glow: rgba(249, 115, 22, 0.12);
+  --accent-weak: rgba(249, 115, 22, 0.06);
+  --border: rgba(255, 255, 255, 0.08);
+  --border-hover: rgba(255, 255, 255, 0.12);
+}
+
+.bright .hero-text h1 span:last-child {
+  background: linear-gradient(135deg, #f97316, #eab308);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
 html {
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
@@ -188,6 +222,34 @@ button { font: inherit; cursor: pointer; background: none; border: none; color: 
 
 .nav-links a:hover {
   color: var(--ink);
+}
+
+.theme-switcher {
+  display: flex;
+  gap: 4px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 3px;
+  margin-right: 12px;
+}
+
+.theme-btn {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  transition: all 0.2s;
+  padding: 0;
+}
+
+.theme-btn[data-theme="dark"] { background: #111; }
+.theme-btn[data-theme="light"] { background: #e8e4de; }
+.theme-btn[data-theme="bright"] { background: linear-gradient(135deg, #f97316, #eab308); }
+
+.theme-btn.active {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px var(--accent-glow);
 }
 
 .nav-burger {
@@ -1031,7 +1093,25 @@ button { font: inherit; cursor: pointer; background: none; border: none; color: 
     grid-column: 1;
   }
 
-  .edu-grid {
+.partner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 32px 0;
+}
+
+.partner-logo {
+  max-height: 90px;
+  width: auto;
+  opacity: 0.5;
+  transition: opacity 0.3s;
+}
+
+.partner-logo:hover {
+  opacity: 0.8;
+}
+
+.edu-grid {
     grid-template-columns: 1fr;
   }
 
