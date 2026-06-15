@@ -1,32 +1,399 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Arental — аренда спецтехники</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>АТМОСФЕРА — Креативное digital‑агентство</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <header>
-    <nav>
-      <h1>Arental</h1>
-      <ul>
-        <li><a href="#">Главная</a></li>
-        <li><a href="#">Техника</a></li>
-        <li><a href="#">Контакты</a></li>
-      </ul>
-    </nav>
-  </header>
+
+  <nav class="navbar">
+    <div class="nav-container">
+      <a class="nav-logo">АТМОСФЕРА</a>
+      <div class="nav-links">
+        <a href="#services">Услуги</a>
+        <a href="#cases">Кейсы</a>
+        <a href="#how">Процесс</a>
+        <a href="#study">Обучение</a>
+        <a href="#jobs">Карьера</a>
+        <a href="#contact">Контакты</a>
+      </div>
+      <button class="nav-toggle" id="navToggle" aria-label="Меню">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="mobile-overlay" id="mobileOverlay">
+    <div class="mobile-menu">
+      <a href="#services">Услуги</a>
+      <a href="#cases">Кейсы</a>
+      <a href="#how">Процесс</a>
+      <a href="#study">Обучение</a>
+      <a href="#jobs">Карьера</a>
+      <a href="#contact">Контакты</a>
+    </div>
+  </div>
+
   <main>
     <section class="hero">
-      <h2>Аренда спецтехники</h2>
-      <p>Надёжная техника для любых задач</p>
-      <a href="#" class="btn">Каталог</a>
+      <div class="hero-bg"></div>
+      <div class="container">
+        <div class="hero-grid">
+          <div class="hero-text">
+            <span class="badge">Прозрачно · Дружелюбно · Эффективно</span>
+            <h1>Digital‑агентство</h1>
+            <p>Лидогенерация, интеграции, автоматизация рекламных потоков и CRM‑упаковка бизнеса. Собираем маркетинг в единую систему и считаем результат цифрами.</p>
+            <div class="hero-tags">
+              <span>Быстрый старт</span>
+              <span>Интеграции</span>
+              <span>Сквозная аналитика</span>
+            </div>
+            <div class="hero-btns">
+              <a href="#contact" class="btn btn-primary">Получить бесплатный аудит</a>
+              <a href="#cases" class="btn btn-outline">Посмотреть кейсы</a>
+            </div>
+          </div>
+          <div class="hero-card">
+            <h3>Бесплатный экспресс‑аудит</h3>
+            <p>Напишите нам — предложим план улучшений и прогноз по лидам.</p>
+            <a href="mailto:hello@arental.ru" class="btn btn-primary">hello@arental.ru</a>
+            <a href="tel:+78129287478" class="btn btn-outline">+7 812 928 74 78</a>
+            <span class="hero-card-footnote">Отвечаем в течение 1 часа в рабочее время.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="services" class="section">
+      <div class="container">
+        <span class="badge">Услуги</span>
+        <div class="section-header">
+          <h2>Что мы делаем</h2>
+          <p>Шесть направлений — единая система роста</p>
+        </div>
+        <div class="grid-3">
+          <div class="card">
+            <div class="card-icon">△</div>
+            <h4>Разработка CRM</h4>
+            <p>Логика под ваши процессы, интеграции с 1С/телефонией/платежами</p>
+          </div>
+          <div class="card">
+            <div class="card-icon">●</div>
+            <h4>Лидогенерация</h4>
+            <p>Таргет, контекст, CPA‑сети и лид‑воронки</p>
+          </div>
+          <div class="card">
+            <div class="card-icon">◈</div>
+            <h4>Автоматизация потоков</h4>
+            <p>Правила, скрипты, автоперераспределение бюджетов</p>
+          </div>
+          <div class="card">
+            <div class="card-icon">☰</div>
+            <h4>Чат‑боты и сценарии</h4>
+            <p>Сбор и квалификация лидов 24/7</p>
+          </div>
+          <div class="card">
+            <div class="card-icon">▣</div>
+            <h4>Креатив и лендинги</h4>
+            <p>Видео/баннеры + посадочные для конверсии</p>
+          </div>
+          <div class="card">
+            <div class="card-icon">◉</div>
+            <h4>Аналитика и отчётность</h4>
+            <p>GTM, дашборды, ROI‑отчёты</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt">
+      <div class="container">
+        <span class="badge">Каналы</span>
+        <div class="section-header">
+          <h2>Где мы запускаем рекламу</h2>
+          <p>Комбинируем каналы ради CPL и качества лидов</p>
+        </div>
+        <div class="channels">
+          <span class="channel-tag">CPA‑сети</span>
+          <span class="channel-tag">TikTok</span>
+          <span class="channel-tag">Соцсети</span>
+          <span class="channel-tag">Медийная реклама</span>
+          <span class="channel-tag">Боты и мессенджеры</span>
+          <span class="channel-tag">E‑mail / CRM‑вебхуки</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <span class="badge">Цифры</span>
+        <h2 class="section-title">Доказательства эффективности</h2>
+        <div class="stats">
+          <div class="stat">
+            <span class="stat-num">150+</span>
+            <span class="stat-label">реализованных проектов</span>
+          </div>
+          <div class="stat">
+            <span class="stat-num">+250%</span>
+            <span class="stat-label">средний рост лидов за 3 месяца</span>
+          </div>
+          <div class="stat">
+            <span class="stat-num">20+</span>
+            <span class="stat-label">экспертов в команде</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt">
+      <div class="container">
+        <span class="badge">Подход</span>
+        <h2 class="section-title">Почему с нами работают</h2>
+        <div class="grid-2">
+          <div class="card card-check">Комплекс: маркетинг + CRM + автоматизация</div>
+          <div class="card card-check">KPI и прозрачность бюджета</div>
+          <div class="card card-check">Снижение CPL до 40% за счёт оптимизации каналов</div>
+          <div class="card card-check">Поддержка 24/7 и SLA для предприятий</div>
+          <div class="card card-check">Интеграции — от 1С до call‑tracking</div>
+          <div class="card card-check">Постоянная оптимизация креативов и воронок</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <span class="badge">Гарантии</span>
+        <div class="guarantee-card">
+          <p>Если KPI не достигается — работаем бесплатно до результата по согласованной метрике. Прозрачность расходов и отчёты в реальном времени.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="cases" class="section section-alt">
+      <div class="container">
+        <span class="badge">Кейсы</span>
+        <h2 class="section-title">До / После</h2>
+        <div class="cases-grid">
+          <div class="case-card">
+            <h3>Ритейл — CRM + лидогенерация</h3>
+            <p>Потеря заявок и разрозненные источники</p>
+            <span class="kpi">+32% продаж</span>
+            <small>Объединили источники, автоматизировали обработку</small>
+          </div>
+          <div class="case-card">
+            <h3>IT‑стартап — TikTok + CPA</h3>
+            <p>Дорогостоящие лиды</p>
+            <span class="kpi">CPL ↓ 3.8×</span>
+            <small>Перестроили воронку, запустили новые креативы</small>
+          </div>
+          <div class="case-card">
+            <h3>B2B — Полная упаковка</h3>
+            <p>Нерегулярные лиды</p>
+            <span class="kpi">80+ лидов / мес</span>
+            <small>Лид‑магниты, вебинары, сквозная аналитика</small>
+          </div>
+          <div class="case-card">
+            <h3>Медиа‑кампания</h3>
+            <p>Низкая узнаваемость</p>
+            <span class="kpi">1 000 000+ охват</span>
+            <small>Медиаплан + PR + таргет</small>
+          </div>
+          <div class="case-card">
+            <h3>Онлайн‑школа — Автоворонка + CRM</h3>
+            <p>Ручная обработка и долгие ответы</p>
+            <span class="kpi">Конверсия ↑ 2.7×</span>
+            <small>Чат‑бот квалификация + CRM + email‑цепочки 24/7</small>
+          </div>
+          <div class="case-card">
+            <h3>Производство — Сквозная аналитика</h3>
+            <p>Непонятно какие каналы дают клиентов</p>
+            <span class="kpi">CPL ↓ 45%</span>
+            <small>Call‑tracking + дашборды + объединение онлайн/офлайн</small>
+          </div>
+          <div class="case-card">
+            <h3>E‑commerce — Таргет + CPA</h3>
+            <p>Высокий CAC и низкий LTV</p>
+            <span class="kpi">CAC ↓ 60%</span>
+            <small>TikTok + CPA‑партнёрка + ретаргетинг + лояльность</small>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="how" class="section">
+      <div class="container">
+        <span class="badge">Процесс</span>
+        <h2 class="section-title">Как мы работаем</h2>
+        <div class="steps">
+          <div class="step">
+            <span class="step-num">01</span>
+            <h4>Бесплатная консультация</h4>
+            <p>Знакомимся, разбираем задачи</p>
+          </div>
+          <div class="step-arrow">→</div>
+          <div class="step">
+            <span class="step-num">02</span>
+            <h4>Аудит и дорожная карта</h4>
+            <p>Анализируем, предлагаем план</p>
+          </div>
+          <div class="step-arrow">→</div>
+          <div class="step">
+            <span class="step-num">03</span>
+            <h4>Внедрение и запуск</h4>
+            <p>Реализуем, тестируем</p>
+          </div>
+          <div class="step-arrow">→</div>
+          <div class="step">
+            <span class="step-num">04</span>
+            <h4>Оптимизация и масштаб</h4>
+            <p>Улучшаем, растем</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt">
+      <div class="container">
+        <span class="badge">Отзывы</span>
+        <div class="reviews-slider">
+          <div class="reviews-track" id="reviewsTrack">
+            <div class="review"><p>"С их CRM перестали терять заявки и закрыли +40% сделок"</p><span>— Анна, директор по продажам</span></div>
+            <div class="review"><p>"200+ лидов в месяц стабильно. Окупаемость высокая"</p><span>— Михаил, владелец</span></div>
+            <div class="review"><p>"Работают по делу — отчёты прозрачные, метрики растут"</p><span>— Елена, маркетолог</span></div>
+          </div>
+          <div class="reviews-controls">
+            <button id="prevReview" class="btn btn-outline">←</button>
+            <div class="reviews-dots" id="reviewsDots">
+              <span class="dot active"></span>
+              <span class="dot"></span>
+              <span class="dot"></span>
+            </div>
+            <button id="nextReview" class="btn btn-outline">→</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <span class="badge">FAQ</span>
+        <h2 class="section-title">Вопросы и ответы</h2>
+        <div class="faq-grid">
+          <div class="faq-item">
+            <button class="faq-question">Сколько стоит внедрение CRM? <span>+</span></button>
+            <div class="faq-answer"><p>Зависит от задач — ориентировочно от 200 тыс. ₽. После аудита дадим точную смету.</p></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question">Какие каналы используете? <span>+</span></button>
+            <div class="faq-answer"><p>CPA, TikTok, соцсети, медиа, боты, e‑mail и др.</p></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question">Когда ждать первые лиды? <span>+</span></button>
+            <div class="faq-answer"><p>Обычно в первые 2–3 недели после запуска кампаний.</p></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question">Есть ли гарантия? <span>+</span></button>
+            <div class="faq-answer"><p>Да — по KPI. Фиксируем SLA и метрики в договоре.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="study" class="section section-accent">
+      <div class="container">
+        <span class="badge">Обучение</span>
+        <h2 class="section-title">Код Доступа</h2>
+        <p class="study-subtitle">Настоящая IT-песочница</p>
+        <p class="study-desc"><strong>Код Доступа</strong> — образовательная профориентация для школьников 8-11 классов, которая превращает интерес к технологиям в профессиональные навыки и уверенность в выборе IT-специальности</p>
+        <div class="grid-2" style="margin-top:3rem">
+          <div class="card">
+            <div class="card-icon">🎯</div>
+            <h4>Обучаем через реальные задачи</h4>
+            <p>Используем кейсы и задачи, с которыми сталкиваются IT-специалисты в работе.</p>
+          </div>
+          <div class="card">
+            <div class="card-icon">🚀</div>
+            <h4>Помогаем найти свой путь в IT</h4>
+            <p>Показываем реальные IT-профессии через практические проекты.</p>
+          </div>
+        </div>
+        <div class="study-features">
+          <div class="sf"><span>📚</span> Практические задачи</div>
+          <div class="sf"><span>💼</span> Реальные проекты</div>
+          <div class="sf"><span>🎓</span> Портфолио</div>
+          <div class="sf"><span>🔬</span> IT-песочница</div>
+        </div>
+        <div class="study-cta">
+          <p>Хотите узнать больше о программе?</p>
+          <a href="https://kodstudy.ru/" target="_blank" class="btn btn-primary">Перейти на сайт kodstudy.ru →</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="jobs" class="section">
+      <div class="container">
+        <span class="badge">Карьера</span>
+        <h2 class="section-title">Приглашаем в команду</h2>
+        <p class="jobs-subtitle">Работаем над сложными задачами. Ищем тех, кто хочет расти.</p>
+
+        <h3 class="section-subtitle">Вакансии</h3>
+        <div class="grid-3">
+          <div class="card card-center">&lt;/&gt;<h4>Программист / DevOps</h4><p>Разработка и поддержка инфраструктуры</p></div>
+          <div class="card card-center">△<h4>Менеджер проекта</h4><p>Управление командой, сроками и ожиданиями</p></div>
+          <div class="card card-center">☆<h4>Продуктовый лидер</h4><p>Стратегия, метрики, развитие продукта</p></div>
+          <div class="card card-center">◉<h4>Аналитик</h4><p>Данные, отчёты, гипотезы</p></div>
+          <div class="card card-center">✓<h4>Тестировщик</h4><p>Ручное и авто-тестирование</p></div>
+        </div>
+
+        <div class="jobs-stats">
+          <div class="js-item"><span class="js-num">13+</span><span>специалистов в команде</span></div>
+          <div class="js-item"><span class="js-num">404</span><span>дня без багов</span></div>
+          <div class="js-item"><span class="js-num">5</span><span>открытых вакансий</span></div>
+        </div>
+
+        <h3 class="section-subtitle">Условия</h3>
+        <div class="grid-2 perks">
+          <div class="card"><h4>🌍 Удалёнка</h4><p>Работа из любой точки мира</p></div>
+          <div class="card"><h4>🔥 Проекты</h4><p>Интересные задачи для крупных клиентов</p></div>
+          <div class="card"><h4>📈 Рост</h4><p>Обучение, конференции, менторство</p></div>
+          <div class="card"><h4>🤝 Команда</h4><p>Дружные эксперты без бюрократии</p></div>
+        </div>
+
+        <div class="jobs-contact">
+          <div>
+            <h4>Хотите к нам?</h4>
+            <p>Расскажите о себе — мы ответим в ближайшее время</p>
+          </div>
+          <div>
+            <a href="tel:+79119287478" class="btn btn-outline">+7 911 928 7478</a>
+            <a href="mailto:hello@arental.ru" class="btn btn-primary">hello@arental.ru</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section section-alt section-last">
+      <div class="container">
+        <span class="badge">Контакты</span>
+        <div class="contacts">
+          <div>
+            <h4>АТМОСФЕРА</h4>
+            <p>+7 812 928 74 78</p>
+            <p>197376, г. Санкт-Петербург, Аптекарский пр., д. 6, Литера А, помещ. 25 Н, офис 702</p>
+            <p>hello@arental.ru</p>
+            <p class="muted">ИНН 7842216839</p>
+          </div>
+          <div>
+            <p class="muted">© АТМОСФЕРА, 2025</p>
+          </div>
+        </div>
+      </div>
     </section>
   </main>
-  <footer>
-    <p>&copy; 2026 Arental</p>
-  </footer>
+
   <script src="script.js"></script>
 </body>
 </html>
