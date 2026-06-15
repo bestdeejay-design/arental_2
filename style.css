@@ -31,9 +31,9 @@
   --ink: #1d1d1f;
   --ink-secondary: #6e6e73;
   --ink-tertiary: #86868b;
-  --accent: #b45309;
-  --accent-glow: rgba(180, 83, 9, 0.08);
-  --accent-weak: rgba(180, 83, 9, 0.04);
+  --accent: #d97706;
+  --accent-glow: rgba(217, 119, 6, 0.1);
+  --accent-weak: rgba(217, 119, 6, 0.05);
   --border: rgba(0, 0, 0, 0.08);
   --border-hover: rgba(0, 0, 0, 0.12);
 }
