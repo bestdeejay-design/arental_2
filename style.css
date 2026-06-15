@@ -296,9 +296,12 @@ button { font: inherit; cursor: pointer; background: none; border: none; color: 
 }
 
 .value-icon {
-  font-size: 24px;
+  width: 28px;
+  height: 28px;
   display: block;
-  margin-bottom: 8px;
+  margin-bottom: 12px;
+  color: var(--accent);
+  stroke-width: 1.5;
 }
 
 .value-card h4 {
@@ -682,27 +685,39 @@ button { font: inherit; cursor: pointer; background: none; border: none; color: 
 
 .hero-metrics {
   display: flex;
-  gap: 32px;
+  gap: 0;
   margin-top: 48px;
+  border-top: 1px solid var(--border);
+  padding-top: 24px;
 }
 
 .hero-metrics > div {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  padding-right: 32px;
+  min-width: 110px;
 }
 
-.hero-metrics > div span {
-  font-size: 24px;
+.hero-metrics > div + div {
+  padding-left: 32px;
+  border-left: 1px solid var(--border);
+}
+
+.hero-metrics > div .counter {
+  font-size: 26px;
   font-weight: 700;
   color: var(--ink);
+  letter-spacing: -0.02em;
+  line-height: 1;
 }
 
-.hero-metrics > div {
+.hero-metrics > div span:last-child {
   font-size: 12px;
   color: var(--ink-tertiary);
   text-transform: uppercase;
   letter-spacing: 0.03em;
+  margin-top: 4px;
 }
 
 .hero-visual {
@@ -1175,10 +1190,13 @@ button { font: inherit; cursor: pointer; background: none; border: none; color: 
   background: var(--bg-card);
 }
 
-.edu-emoji {
-  font-size: 28px;
+.edu-icon {
+  width: 28px;
+  height: 28px;
   display: block;
   margin-bottom: 12px;
+  color: var(--accent);
+  stroke-width: 1.5;
 }
 
 .edu-card h3 {

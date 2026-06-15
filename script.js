@@ -148,8 +148,9 @@
       if (entry.isIntersecting) {
         var el = entry.target;
         var target = parseInt(el.getAttribute('data-target'), 10);
+        var prefix = el.getAttribute('data-prefix') || '';
+        var suffix = el.getAttribute('data-suffix') || '';
         if (isNaN(target)) return;
-        var start = 0;
         var duration = 1500;
         var startTime = null;
 
@@ -157,11 +158,11 @@
           if (!startTime) startTime = timestamp;
           var progress = Math.min((timestamp - startTime) / duration, 1);
           var eased = 1 - Math.pow(1 - progress, 3);
-          el.textContent = Math.floor(eased * target);
+          el.textContent = prefix + Math.floor(eased * target) + suffix;
           if (progress < 1) {
             requestAnimationFrame(step);
           } else {
-            el.textContent = target;
+            el.textContent = prefix + target + suffix;
           }
         }
 
@@ -216,6 +217,28 @@
 
     backToTop.addEventListener('click', function () {
       lenis.scrollTo(0, { duration: 1.2 });
+    });
+  }
+
+  /* ── Contact form mailto ── */
+  var contactForm = document.querySelector('.contact-form');
+  if (contactForm) {
+    contactForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var name = this.querySelector('input[type="text"]').value.trim();
+      var phone = this.querySelector('input[type="tel"]').value.trim();
+      var email = this.querySelector('input[type="email"]').value.trim();
+      var message = this.querySelector('textarea').value.trim();
+
+      var subject = encodeURIComponent('Заявка с сайта АТМОСФЕРА от ' + name);
+      var body = encodeURIComponent(
+        'Имя: ' + name + '\n' +
+        'Телефон: ' + phone + '\n' +
+        'Email: ' + email + '\n' +
+        'Сообщение: ' + message
+      );
+
+      window.location.href = 'mailto:hello@arental.ru?subject=' + subject + '&body=' + body;
     });
   }
 
