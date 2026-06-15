@@ -55,14 +55,27 @@
   var overlay = document.getElementById('menuOverlay');
 
   if (burger && overlay) {
-    burger.addEventListener('click', function () {
+    function closeMenu() {
+      overlay.classList.remove('open');
+      burger.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    function toggleMenu() {
+      var isOpen = overlay.classList.contains('open');
       overlay.classList.toggle('open');
-    });
+      burger.classList.toggle('active');
+      document.body.style.overflow = isOpen ? '' : 'hidden';
+    }
+
+    burger.addEventListener('click', toggleMenu);
 
     overlay.querySelectorAll('a').forEach(function (link) {
-      link.addEventListener('click', function () {
-        overlay.classList.remove('open');
-      });
+      link.addEventListener('click', closeMenu);
+    });
+
+    overlay.addEventListener('click', function (e) {
+      if (e.target === overlay) closeMenu();
     });
   }
 
