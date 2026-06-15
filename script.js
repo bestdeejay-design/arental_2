@@ -194,6 +194,14 @@
     });
   }
 
+  /* ── Logo scroll to top ── */
+  var logoTop = document.getElementById('logoTop');
+  if (logoTop) {
+    logoTop.addEventListener('click', function () {
+      lenis.scrollTo(0, { duration: 1.2 });
+    });
+  }
+
   /* ── Back to top ── */
   var backToTop = document.getElementById('backToTop');
 
