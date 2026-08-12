@@ -1,19 +1,43 @@
 (function () {
   'use strict';
 
-  /* ── Lenis smooth scroll ── */
-  var lenis = new Lenis({
-    duration: 1.2,
-    easing: function (t) { return Math.min(1, 1.001 - Math.pow(2, -10 * t)); },
-    orientation: 'vertical',
-    smoothWheel: true,
-  });
-
-  function raf(time) {
-    lenis.raf(time);
+  /* ── Lenis smooth scroll (graceful fallback if CDN fails) ── */
+  var lenis = null;
+  if (typeof Lenis !== 'undefined') {
+    lenis = new Lenis({
+      duration: 1.2,
+      easing: function (t) { return Math.min(1, 1.001 - Math.pow(2, -10 * t)); },
+      orientation: 'vertical',
+      smoothWheel: true,
+    });
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
     requestAnimationFrame(raf);
   }
-  requestAnimationFrame(raf);
+
+  // Null-safe scroll helpers: work with or without Lenis
+  function scrollTo(target, opts) {
+    opts = opts || {};
+    if (lenis) {
+      lenis.scrollTo(target, opts);
+    } else if (typeof target === 'number') {
+      window.scrollTo({ top: target, behavior: 'smooth' });
+    } else if (target && target.scrollIntoView) {
+      target.scrollIntoView({ behavior: 'smooth' });
+    }
+  }
+
+  function onScroll(cb) {
+    if (lenis) {
+      lenis.on('scroll', cb);
+    } else {
+      window.addEventListener('scroll', function () {
+        cb({ animatedScroll: window.scrollY });
+      }, { passive: true });
+    }
+  }
 
   /* ── Theme switcher ── */
   function setTheme(theme) {
@@ -39,7 +63,7 @@
   var lastScroll = 0;
 
   if (navbar) {
-    lenis.on('scroll', function (e) {
+    onScroll(function (e) {
       var currentScroll = e.animatedScroll;
       if (currentScroll > 80 && currentScroll > lastScroll) {
         navbar.classList.add('hidden');
@@ -58,15 +82,30 @@
     function closeMenu() {
       overlay.classList.remove('open');
       burger.classList.remove('active');
+      burger.setAttribute('aria-expanded', 'false');
       document.body.style.overflow = '';
+      burger.focus();
+    }
+
+    function openMenu() {
+      overlay.classList.add('open');
+      burger.classList.add('active');
+      burger.setAttribute('aria-expanded', 'true');
+      document.body.style.overflow = 'hidden';
+      var firstLink = overlay.querySelector('a');
+      if (firstLink) firstLink.focus();
     }
 
     function toggleMenu() {
-      var isOpen = overlay.classList.contains('open');
-      overlay.classList.toggle('open');
-      burger.classList.toggle('active');
-      document.body.style.overflow = isOpen ? '' : 'hidden';
+      if (overlay.classList.contains('open')) {
+        closeMenu();
+      } else {
+        openMenu();
+      }
     }
+
+    burger.setAttribute('aria-expanded', 'false');
+    burger.setAttribute('aria-controls', 'menuOverlay');
 
     burger.addEventListener('click', toggleMenu);
 
@@ -76,6 +115,12 @@
 
     overlay.addEventListener('click', function (e) {
       if (e.target === overlay) closeMenu();
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && overlay.classList.contains('open')) {
+        closeMenu();
+      }
     });
   }
 
@@ -114,9 +159,19 @@
 
   if (dots) {
     dots.querySelectorAll('.dot').forEach(function (dot, i) {
+      dot.setAttribute('role', 'button');
+      dot.setAttribute('tabindex', '0');
+      dot.setAttribute('aria-label', 'Отзыв ' + (i + 1));
       dot.addEventListener('click', function () {
         reviewIdx = i;
         updateReviews();
+      });
+      dot.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          reviewIdx = i;
+          updateReviews();
+        }
       });
     });
   }
@@ -212,7 +267,13 @@
   var logoTop = document.getElementById('logoTop');
   if (logoTop) {
     logoTop.addEventListener('click', function () {
-      lenis.scrollTo(0, { duration: 1.2 });
+      scrollTo(0, { duration: 1.2 });
+    });
+    logoTop.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        scrollTo(0, { duration: 1.2 });
+      }
     });
   }
 
@@ -220,7 +281,7 @@
   var backToTop = document.getElementById('backToTop');
 
   if (backToTop) {
-    lenis.on('scroll', function (e) {
+    onScroll(function (e) {
       if (e.animatedScroll > 500) {
         backToTop.classList.add('visible');
       } else {
@@ -229,7 +290,7 @@
     });
 
     backToTop.addEventListener('click', function () {
-      lenis.scrollTo(0, { duration: 1.2 });
+      scrollTo(0, { duration: 1.2 });
     });
   }
 
@@ -252,6 +313,7 @@
       );
 
       window.location.href = 'mailto:hello@arental.ru?subject=' + subject + '&body=' + body;
+      alert('Спасибо! Мы получили вашу заявку и свяжемся с вами.');
     });
   }
 
@@ -260,10 +322,15 @@
     a.addEventListener('click', function (e) {
       var href = this.getAttribute('href');
       if (href && href.length > 1) {
-        e.preventDefault();
         var target = document.querySelector(href);
         if (target) {
-          lenis.scrollTo(target, { duration: 1.2, offset: -60 });
+          e.preventDefault();
+          scrollTo(target, { duration: 1.2, offset: -60 });
+          if (history.pushState) {
+            history.pushState(null, '', href);
+          } else {
+            location.hash = href;
+          }
         }
       }
     });
