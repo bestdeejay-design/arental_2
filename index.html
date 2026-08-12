@@ -24,6 +24,9 @@
   <meta property="og:image:type" content="image/png" />
   <link rel="canonical" href="https://arental.ru/" />
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" />
   <link rel="stylesheet" href="style.css" />
   <script>try{var t=localStorage.getItem('arental_theme')||'dark';var d=document.documentElement;d.classList.add(t==='light'?'light':(t==='bright'?'bright':'dark'));d.classList.add('js');}catch(e){document.documentElement.classList.add('dark','js');}</script>
   <script>
@@ -61,6 +64,34 @@
     "sameAs": ["https://t.me/arental"]
   }
   </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Сколько стоит внедрение CRM?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Зависит от задач — ориентировочно от 200 тыс. ₽. После аудита дадим точную смету." }
+      },
+      {
+        "@type": "Question",
+        "name": "Какие каналы используете?",
+        "acceptedAnswer": { "@type": "Answer", "text": "CPA, TikTok, соцсети, медиа, боты, e-mail и другие каналы под вашу нишу." }
+      },
+      {
+        "@type": "Question",
+        "name": "Когда ждать первые лиды?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Обычно в первые 2–3 недели после запуска кампаний." }
+      },
+      {
+        "@type": "Question",
+        "name": "Есть ли гарантия?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Да — фиксируем KPI и SLA в договоре. При недостижении результата работаем бесплатно." }
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
 
@@ -71,7 +102,6 @@
         <a href="#services">Услуги</a>
         <a href="#cases">Кейсы</a>
         <a href="#process">Процесс</a>
-        <a href="#career">Карьера</a>
         <a href="#contact">Контакты</a>
       </div>
       <div class="theme-switcher">
@@ -91,7 +121,6 @@
         <a href="#services">Услуги</a>
         <a href="#cases">Кейсы</a>
         <a href="#process">Процесс</a>
-        <a href="#career">Карьера</a>
         <a href="#contact">Контакты</a>
       </div>
       <div class="menu-footer">
@@ -111,10 +140,10 @@
     <section class="hero">
       <div class="hero-grid">
         <div class="hero-text">
-          <p class="hero-label reveal">Прозрачно · Дружелюбно · Эффективно</p>
+          <p class="hero-label reveal">Digital-агентство полного цикла</p>
           <h1 class="reveal">
-            <span>Digital-</span>
-            <span>агентство</span>
+            <span>Маркетинг,</span>
+            <span>который приносит лиды</span>
           </h1>
           <p class="hero-desc reveal">Лидогенерация, интеграции, автоматизация рекламных потоков и CRM‑упаковка бизнеса. Собираем маркетинг в единую систему.</p>
           <div class="hero-actions reveal">
@@ -126,6 +155,7 @@
             <div><span class="counter" data-target="250" data-prefix="+" data-suffix="%">0</span><span>рост лидов</span></div>
             <div><span class="counter" data-target="20" data-suffix="+">0</span><span>экспертов</span></div>
           </div>
+          <p class="hero-proof reveal"><a href="#cases">+32% продаж · CPL ↓ 3.8× · 80+ лидов/мес</a> — результаты наших кейсов</p>
         </div>
         <div class="hero-visual reveal">
           <div class="hero-card">
@@ -338,6 +368,18 @@
       </div>
     </section>
 
+    <section class="section section-dark">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="tag">Партнёры</span>
+          <h2>С кем мы работаем</h2>
+        </div>
+        <div class="partner reveal">
+          <img src="partner-it-sports.png" alt="ITSPORTS" class="partner-logo" loading="lazy" />
+        </div>
+      </div>
+    </section>
+
     <section id="process" class="section section-dark">
       <div class="container">
         <div class="section-head reveal">
@@ -352,18 +394,6 @@
           <div class="process-step reveal"><span class="process-num">03</span><div><h3>Внедрение и запуск</h3><p>Реализуем, тестируем, запускаем</p></div></div>
           <div class="process-line"></div>
           <div class="process-step reveal"><span class="process-num">04</span><div><h3>Оптимизация и масштаб</h3><p>Улучшаем показатели и расширяемся</p></div></div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section section-dark" style="padding:80px 0">
-      <div class="container">
-        <div class="cta-strip reveal">
-          <div class="cta-strip-text">
-            <h3>Готовы обсудить ваш проект?</h3>
-            <p>Оставьте заявку — мы проведём бесплатный аудит и предложим план улучшений</p>
-          </div>
-          <a href="#contact" class="btn btn-primary btn-lg">Получить аудит</a>
         </div>
       </div>
     </section>
@@ -416,64 +446,14 @@
       </div>
     </section>
 
-    <section class="section section-dark">
+    <section class="section section-dark" style="padding:80px 0">
       <div class="container">
-        <div class="section-head reveal">
-          <span class="tag">Партнёры</span>
-          <h2>С кем мы работаем</h2>
-        </div>
-        <div class="partner reveal">
-          <img src="partner-it-sports.png" alt="ITSPORTS" class="partner-logo" loading="lazy" />
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="container">
-        <div class="section-head reveal">
-          <span class="tag">Обучение</span>
-          <h2>Код Доступа</h2>
-          <p>Настоящая IT-песочница для школьников 8–11 классов</p>
-        </div>
-        <div class="edu-grid">
-          <div class="edu-card reveal"><svg class="edu-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4"/></svg><h3>Реальные задачи</h3><p>Обучаем через кейсы, с которыми сталкиваются IT-специалисты</p></div>
-          <div class="edu-card reveal"><svg class="edu-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg><h3>Свой путь в IT</h3><p>Помогаем найти профессию через практические проекты</p></div>
-          <div class="edu-card reveal"><svg class="edu-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg><h3>Практические задачи</h3><p>Работаем с реальными кейсами из IT-индустрии</p></div>
-          <div class="edu-card reveal"><svg class="edu-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg><h3>Реальные проекты</h3><p>Создаём работающие продукты для портфолио</p></div>
-          <div class="edu-card reveal"><svg class="edu-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg><h3>Портфолио</h3><p>Формируем профессиональное портфолио проектов</p></div>
-          <div class="edu-card reveal"><svg class="edu-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg><h3>IT-песочница</h3><p>Безопасная среда для экспериментов и проб</p></div>
-        </div>
-        <div class="edu-cta reveal">
-          <p>Хотите узнать больше о программе?</p>
-          <!-- TODO: заменить на корректный URL образовательной платформы (kodstudy.ru сейчас отдаёт 404) -->
-          <a href="#" class="btn btn-primary">Перейти на сайт →</a>
-        </div>
-      </div>
-    </section>
-
-    <section id="career" class="section section-dark">
-      <div class="container">
-        <div class="section-head reveal">
-          <span class="tag">Карьера</span>
-          <h2>Приглашаем в команду</h2>
-          <p>Работаем над сложными задачами. Ищем тех, кто хочет расти.</p>
-        </div>
-        <div class="vacancies">
-          <article class="vacancy reveal"><span class="vacancy-icon">&lt;/&gt;</span><h3>Программист / DevOps</h3><p>CI/CD, Docker, облака, поддержка инфраструктуры</p></article>
-          <article class="vacancy reveal"><span class="vacancy-icon">△</span><h3>Менеджер проекта</h3><p>Agile, Notion, управление командой и сроками</p></article>
-          <article class="vacancy reveal"><span class="vacancy-icon">☆</span><h3>Продуктовый лидер</h3><p>Стратегия, метрики, развитие от идеи до релиза</p></article>
-          <article class="vacancy reveal"><span class="vacancy-icon">◉</span><h3>Аналитик</h3><p>SQL, дашборды, данные, гипотезы и исследования</p></article>
-          <article class="vacancy reveal"><span class="vacancy-icon">✓</span><h3>Тестировщик</h3><p>Ручное и авто-тестирование, культура качества</p></article>
-        </div>
-        <div class="perks reveal">
-          <div class="perk"><svg width="16" height="16" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg> Удалёнка</div>
-          <div class="perk"><svg width="16" height="16" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg> Проекты</div>
-          <div class="perk"><svg width="16" height="16" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg> Рост</div>
-          <div class="perk"><svg width="16" height="16" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg> Команда</div>
-        </div>
-        <div class="career-cta reveal">
-          <div><h3>Хотите к нам?</h3><p>Расскажите о себе — мы ответим в ближайшее время</p></div>
-          <div><a href="tel:+79119287478" class="btn btn-ghost">+7 911 928 7478</a><a href="mailto:hello@arental.ru" class="btn btn-primary">Написать</a></div>
+        <div class="cta-strip reveal">
+          <div class="cta-strip-text">
+            <h3>Готовы обсудить ваш проект?</h3>
+            <p>Оставьте заявку — мы проведём бесплатный аудит и предложим план улучшений</p>
+          </div>
+          <a href="#contact" class="btn btn-primary btn-lg">Получить аудит</a>
         </div>
       </div>
     </section>

@@ -62,6 +62,11 @@
     document.querySelectorAll('.theme-btn').forEach(function (btn) {
       btn.classList.toggle('active', btn.getAttribute('data-theme') === theme);
     });
+    var meta = document.querySelector('meta[name="theme-color"]');
+    if (meta) {
+      var bg = getComputedStyle(document.body).getPropertyValue('--bg').trim() || '#0a0a0c';
+      meta.setAttribute('content', bg);
+    }
   }
 
   document.querySelectorAll('.theme-btn').forEach(function (btn) {
