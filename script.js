@@ -1,6 +1,14 @@
 (function () {
   'use strict';
 
+  /* Prevent the browser's native hash autoscroll on load so our
+     programmatic scroll (which accounts for the fixed navbar + section
+     gap) is the single source of truth. Without this, a URL like
+     index.html#services gets a native jump that fights Lenis. */
+  if ('scrollRestoration' in history) {
+    history.scrollRestoration = 'manual';
+  }
+
   /* ── Lenis smooth scroll (graceful fallback if CDN fails) ── */
   var lenis = null;
   if (typeof Lenis !== 'undefined') {
@@ -338,9 +346,22 @@
       var target = document.getElementById(href.slice(1));
       if (!target) return;
       e.preventDefault();
-      var navH = (navbar && !navbar.classList.contains('hidden')) ? navbar.offsetHeight : 0;
+      var navH = navbar ? navbar.offsetHeight : 0;
+      var reveals = target.querySelectorAll('.reveal');
+      var wasVisible = [];
+      reveals.forEach(function (r, i) {
+        wasVisible[i] = r.classList.contains('visible');
+        r.style.transition = 'none';
+        r.classList.add('visible');
+      });
+      var heading = target.querySelector('h2, h1, h3');
+      var gap = heading ? (heading.getBoundingClientRect().top - target.getBoundingClientRect().top) : 0;
+      reveals.forEach(function (r, i) {
+        r.style.transition = '';
+        if (!wasVisible[i]) r.classList.remove('visible');
+      });
       anchoring = true;
-      scrollTo(target, { duration: 1.2, offset: -(navH + 8) });
+      scrollTo(target, { duration: 1.2, offset: gap - navH - 8 });
       setTimeout(function () { anchoring = false; }, 1400);
       if (history.pushState) {
         history.pushState(null, '', href);
@@ -351,15 +372,46 @@
   });
 
   /* ── Honour initial URL hash on load ── */
-  if (location.hash && location.hash.length > 1) {
-    var initialTarget = document.getElementById(location.hash.slice(1));
+  /* The inline <head> script strips the hash from the URL before the browser
+     could perform its native fragment jump, then exposes it as
+     window.__initialHash. We scroll to it here with a navbar-aware offset. */
+  var initialHash = window.__initialHash || '';
+  if (initialHash && initialHash.length > 1) {
+    var initialTarget = document.getElementById(initialHash.slice(1));
     if (initialTarget) {
-      setTimeout(function () {
-        var navH = (navbar && !navbar.classList.contains('hidden')) ? navbar.offsetHeight : 0;
+      var navH = navbar ? navbar.offsetHeight : 0;
+      var reveals = initialTarget.querySelectorAll('.reveal');
+      var wasVisible = [];
+      reveals.forEach(function (r, i) {
+        wasVisible[i] = r.classList.contains('visible');
+        r.style.transition = 'none';
+        r.classList.add('visible');
+      });
+      var heading = initialTarget.querySelector('h2, h1, h3');
+      var gap = heading ? (heading.getBoundingClientRect().top - initialTarget.getBoundingClientRect().top) : 0;
+      reveals.forEach(function (r, i) {
+        r.style.transition = '';
+        if (!wasVisible[i]) r.classList.remove('visible');
+      });
+
+      function runInitialScroll() {
         anchoring = true;
-        scrollTo(initialTarget, { duration: 1.0, offset: -(navH + 8) });
+        scrollTo(initialTarget, { duration: 1.0, offset: gap - navH - 8 });
+        /* Restore the hash in the address bar (replaceState never scrolls). */
+        try { history.replaceState(null, '', initialHash); } catch (e) {}
         setTimeout(function () { anchoring = false; }, 1200);
-      }, 350);
+      }
+
+      /* Run after the browser's native fragment jump so ours wins. */
+      if (document.readyState === 'complete') {
+        setTimeout(runInitialScroll, 60);
+      } else {
+        window.addEventListener('load', function () {
+          setTimeout(runInitialScroll, 60);
+        });
+        /* Fallback re-assert in case the native jump lands even later. */
+        setTimeout(runInitialScroll, 900);
+      }
     }
   }
 

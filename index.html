@@ -26,6 +26,20 @@
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
   <link rel="stylesheet" href="style.css" />
   <script>try{var t=localStorage.getItem('arental_theme')||'dark';var d=document.documentElement;d.classList.add(t==='light'?'light':(t==='bright'?'bright':'dark'));d.classList.add('js');}catch(e){document.documentElement.classList.add('dark','js');}</script>
+  <script>
+    /* Capture any initial hash and strip it from the URL *before* the
+       browser performs a native fragment jump on load. script.js reads
+       window.__initialHash and scrolls programmatically instead, so the
+       heading lands just below the fixed navbar. */
+    (function () {
+      try {
+        if (location.hash && location.hash.length > 1) {
+          window.__initialHash = location.hash;
+          history.replaceState(null, '', location.pathname + location.search);
+        }
+      } catch (e) {}
+    })();
+  </script>
   <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
   <script type="application/ld+json">
   {

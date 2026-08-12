@@ -1401,6 +1401,11 @@ html.js .reveal.visible {
   text-align: right;
 }
 
+.contact-note--center {
+  text-align: center;
+  margin-top: 40px;
+}
+
 .contact-note p {
   font-size: 14px;
   color: var(--ink-secondary);
@@ -1411,6 +1416,10 @@ html.js .reveal.visible {
   font-size: 12px;
   color: var(--ink-tertiary) !important;
 }
+
+/* Контраст копирайта ≥ 4.5:1 в светлых темах (WCAG AA) */
+.light .contact-copy { color: #6e6e73 !important; }
+.bright .contact-copy { color: #86868b !important; }
 
 @media (max-width: 900px) {
   .theme-switcher { margin-right: 8px; }
