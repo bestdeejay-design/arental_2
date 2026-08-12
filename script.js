@@ -20,12 +20,20 @@
   // Null-safe scroll helpers: work with or without Lenis
   function scrollTo(target, opts) {
     opts = opts || {};
+    var offset = opts.offset || 0;
+    var top;
+    if (typeof target === 'number') {
+      top = target;
+    } else if (target && target.getBoundingClientRect) {
+      top = target.getBoundingClientRect().top + (window.scrollY || window.pageYOffset || 0);
+    } else {
+      return;
+    }
+    top += offset;
     if (lenis) {
-      lenis.scrollTo(target, opts);
-    } else if (typeof target === 'number') {
-      window.scrollTo({ top: target, behavior: 'smooth' });
-    } else if (target && target.scrollIntoView) {
-      target.scrollIntoView({ behavior: 'smooth' });
+      lenis.scrollTo(top, { duration: opts.duration || 1.2, easing: opts.easing });
+    } else {
+      window.scrollTo({ top: top, behavior: 'smooth' });
     }
   }
 
@@ -61,9 +69,14 @@
   /* ── Navbar hide/show on scroll ── */
   var navbar = document.getElementById('navbar');
   var lastScroll = 0;
+  var anchoring = false;
 
   if (navbar) {
     onScroll(function (e) {
+      if (anchoring) {
+        navbar.classList.remove('hidden');
+        return;
+      }
       var currentScroll = e.animatedScroll;
       if (currentScroll > 80 && currentScroll > lastScroll) {
         navbar.classList.add('hidden');
@@ -321,19 +334,33 @@
   document.querySelectorAll('a[href^="#"]').forEach(function (a) {
     a.addEventListener('click', function (e) {
       var href = this.getAttribute('href');
-      if (href && href.length > 1) {
-        var target = document.querySelector(href);
-        if (target) {
-          e.preventDefault();
-          scrollTo(target, { duration: 1.2, offset: -60 });
-          if (history.pushState) {
-            history.pushState(null, '', href);
-          } else {
-            location.hash = href;
-          }
-        }
+      if (!href || href.length <= 1) return;
+      var target = document.getElementById(href.slice(1));
+      if (!target) return;
+      e.preventDefault();
+      var navH = (navbar && !navbar.classList.contains('hidden')) ? navbar.offsetHeight : 0;
+      anchoring = true;
+      scrollTo(target, { duration: 1.2, offset: -(navH + 8) });
+      setTimeout(function () { anchoring = false; }, 1400);
+      if (history.pushState) {
+        history.pushState(null, '', href);
+      } else {
+        location.hash = href;
       }
     });
   });
+
+  /* ── Honour initial URL hash on load ── */
+  if (location.hash && location.hash.length > 1) {
+    var initialTarget = document.getElementById(location.hash.slice(1));
+    if (initialTarget) {
+      setTimeout(function () {
+        var navH = (navbar && !navbar.classList.contains('hidden')) ? navbar.offsetHeight : 0;
+        anchoring = true;
+        scrollTo(initialTarget, { duration: 1.0, offset: -(navH + 8) });
+        setTimeout(function () { anchoring = false; }, 1200);
+      }, 350);
+    }
+  }
 
 })();
